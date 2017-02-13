@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array();
+$autoload['helper'] = array('url', 'form', 'html'); //Thêm vào để nó có thể nhận dạng form_submit, form_hidden, v.v...
 
 /*
 | -------------------------------------------------------------------

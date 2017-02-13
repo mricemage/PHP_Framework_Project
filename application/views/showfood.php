@@ -12,6 +12,7 @@ $this->load->helper('url');
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
@@ -83,18 +84,54 @@ $this->load->helper('url');
       <h1>Welcome to our food list page</h1>
       <p>Hey, Check here now! A lot of food here! </p>
       <hr>
-      <h3>Test</h3>
-      <TR><TH>ID</TH><TH>Name</TH><TH>Price</TH><TH>Description</TH></TR>
-      <?php
-          foreach ($food as $row) {
-            echo '<tr><td>' .$row['id']. '</td>';
-            echo '<td>' .$row['name']. '</td>';
-            echo '<td>' .$row['price']. '</td>';
-            echo '<td>' .$row['description']. '</td></tr>';
-          }
+      <div id="products_e" align="center">
+      <h3>Products</h3>
+      <!-- The product side is here -->
+        <?php
+            
+            // "$products" send from "shopping" controller,its stores all product which available in database. 
+            foreach ($food as $product) {
+                $id = $product['id'];
+                $name = $product['name'];
+                $description = $product['description'];
+                $price = $product['price'];
+          ?>
+          <div id='product_div'>  
+                    <div id='image_div'>
+                        <img src="<?php echo base_url() . $product['image'] ?>"/>
+                    </div>
+                    <div id='info_product'>
+                        <div id='name'><?php echo $name; ?></div>
+                        <div id='desc'>  <?php echo $description; ?></div>
+                        <div id='rs'><b>Price</b>:<big style="color:green">
+                            $<?php echo $price; ?></big></div>
+                        <?php
+                        
+                        // Create form and send values in 'shopping/add' function.
+                        echo form_open('shopping/add');
+                        echo form_hidden('id', $id);
+                        echo form_hidden('name', $name);
+                        echo form_hidden('price', $price);
+                        ?> </div> 
+                    <div id='add_button'>
+                        <?php
+                        $btn = array(
+                            'class' => 'fg-button teal',
+                            'value' => 'Add to Cart',
+                            'name' => 'action'
+                        );
+                        
+                        // Submit Button.
+                        echo form_submit($btn);
+                        echo form_close();
+                        ?>
+                    </div>
+                </div>
 
+<?php } ?>
+    </div>
 
-      ?>
+          
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">
@@ -106,10 +143,10 @@ $this->load->helper('url');
     </div>
   </div>
 </div>
-
+<!-- 
 <footer class="container-fluid text-center">
-  <p>Footer Text</p>
-</footer>
+  <p> PHP Framework (2017) - Ho Minh Thang - DIN15SP</p>
+</footer> -->
 
 </body>
 </html>
