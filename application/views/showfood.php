@@ -6,7 +6,7 @@ $this->load->helper('url');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Main</title>
+  <title>Food List</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -61,8 +61,8 @@ $this->load->helper('url');
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Food List</a></li>
+        <li class="active"><a href="<?php echo base_url('index.php'); ?>">Home</a></li>
+        <li><a href="<?php echo site_url('food/showFood'); ?>">Food List</a></li>
         <li><a href="#">Feedback</a></li>
         <li><a href="#">About</a></li>
       </ul>
@@ -76,16 +76,13 @@ $this->load->helper('url');
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
+      <p><a href="#">Advertisement Place Here</a></p>
+      <p><a href="#">Advertisement Place Here</a></p>
+      <p><a href="#">Advertisement Place Here</a></p>
     </div>
-    <div class="col-sm-8 text-left"> 
-      <h1>Welcome to our food list page</h1>
-      <p>Hey, Check here now! A lot of food here! </p>
-      <hr>
-      <div id="products_e" align="center">
-      <h3>Products</h3>
+    <div class="col-sm-8 text-center"> 
+      
+      <h3 style="text-align:center;">Products</h3>
       <!-- The product side is here -->
         <?php
             
@@ -104,7 +101,7 @@ $this->load->helper('url');
                         <div id='name'><?php echo $name; ?></div>
                         <div id='desc'>  <?php echo $description; ?></div>
                         <div id='rs'><b>Price</b>:<big style="color:green">
-                            $<?php echo $price; ?></big></div>
+                            €<?php echo $price; ?></big></div>
                         <?php
                         
                         // Create form and send values in 'shopping/add' function.
@@ -127,26 +124,29 @@ $this->load->helper('url');
                         ?>
                     </div>
                 </div>
+                
 
 <?php } ?>
-    </div>
+    
+
 
           
     </div>
+
     <div class="col-sm-2 sidenav">
       <div class="well">
-        <p>ADS</p>
+        <p>Advertisement place here</p>
       </div>
       <div class="well">
-        <p>ADS</p>
+        <p>Advertisement place here</p>
       </div>
     </div>
   </div>
 </div>
-<!-- 
+
+
 <footer class="container-fluid text-center">
   <p> PHP Framework (2017) - Ho Minh Thang - DIN15SP</p>
-</footer> -->
-
+</footer>
 </body>
 </html>
