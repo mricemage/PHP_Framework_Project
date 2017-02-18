@@ -26,7 +26,7 @@ h1{
 }
 #products_e{
     background-color: #FFFFFF;
-    max-width: 100%;
+    max-width: 98%;
     position: absolute;
     margin-top: 10px;
     
@@ -47,13 +47,13 @@ h2{
 }
 
 #product_div{
-    max-width:25%;
+    max-width:24%;
     height:500px;
     background: #fff;
     position: relative;
     float: left;
     padding: 5px;
-    margin: 2px;
+    margin: 6px;
     border: 1px solid #E0E0E0;
 
 }
