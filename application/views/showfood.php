@@ -1,9 +1,4 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-$this->load->helper('url');
-$this->load->helper('form');
-$this->load->library('cart');
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +49,7 @@ $this->load->library('cart');
                 var result = confirm('Are you sure want to clear all bookings?');
 
                 if (result) {
-                    window.location = "<?php echo base_url(); ?>index.php/food/showFood/remove/all";
+                    window.location = "<?php echo base_url(); ?>index.php/food/remove/all";
                 } else {
                     return false; // cancel button
                 }
@@ -81,7 +76,7 @@ $this->load->library('cart');
         <li><a href="#">About</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        
       </ul>
     </div>
   </div>
@@ -96,17 +91,22 @@ $this->load->library('cart');
     </div>
     <div class="col-sm-8 text-center"> 
     <!-- Thus is the cart place -->
-      <h2 align="center">Products on Your Shopping Cart</h2>
-    <div id="cart">
-       <div id="text"> 
+      <div id='content'>
+                
+        <div id="cart" >
+            <div id = "heading">
+                <h2 align="center">Products on Your Shopping Cart</h2>
+            </div>
+            
+                <div id="text"> 
             <?php  $cart_check = $this->cart->contents();
             
             // If cart is empty, this will show below message.
              if(empty($cart_check)) {
-             echo 'To add products to your shopping cart click on "Add to Cart" Button'; 
-             }  ?> 
-        </div>
-    <table id="table" border="0" cellpadding="5px" cellspacing="1px">
+             echo 'There is no item in the cart! '; 
+             }  ?> </div>
+            
+                <table id="table" border="0" cellpadding="5px" cellspacing="1px">
                   <?php
                   // All values of cart store in "$cart". 
                   if ($cart = $this->cart->contents()): ?>
@@ -114,7 +114,7 @@ $this->load->library('cart');
                         <td>ID</td>
                         <td>Name</td>
                         <td>Price</td>
-                        <td>Quantity</td>
+                        <td>Qty</td>
                         <td>Amount</td>
                         <td>Cancel Product</td>
                     </tr>
@@ -155,9 +155,9 @@ $this->load->library('cart');
                             <td>
                               
                             <?php 
-                            // cancel image.
-                            $path = "<img src='images/cart_cross.jpg' width='25px' height='20px'>";
-                            echo anchor('food/remove/' . $item['rowid'], $path); ?>
+                            // cancle image.
+                            $path = "X";
+                            echo anchor('Food/remove/' . $item['rowid'], $path); ?>
                             </td>
                      <?php endforeach; ?>
                     </tr>
@@ -179,10 +179,9 @@ $this->load->library('cart');
                     </tr>
 <?php endif; ?>
             </table>
-    
-    
-    
-    </div>
+        </div>
+        </div>
+        
 
 
 
@@ -211,11 +210,12 @@ $this->load->library('cart');
                             €<?php echo $price; ?></big></div>
                         <?php
                         
-                        // Create form and send values in 'shopping/add' function.
+                        //Create form and send values in 'shopping/add' function.
                         echo form_open('food/add');
                         echo form_hidden('id', $id);
                         echo form_hidden('name', $name);
                         echo form_hidden('price', $price);
+                        
                         ?> </div> 
                     <div id='add_button'>
                         <?php
@@ -233,7 +233,7 @@ $this->load->library('cart');
                 </div>
                 
 
-<?php } ?>
+<?php }?>
     
 
 

@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed'); 
 
 class Food extends CI_Controller {
 
@@ -9,7 +9,8 @@ class Food extends CI_Controller {
         parent::__construct();
         //load model
         $this->load->model('Food_model');
-        $this->load->library('cart');
+        $this->load->helper(array('url', 'form'));
+        $this->load->library("cart");
     }
 
     public function showFood() 
@@ -17,24 +18,23 @@ class Food extends CI_Controller {
         $this->load->model('Food_model');
         $data['food']=$this->Food_model->showFoods();
         $data['page']='showfood';
-        $this->load->view('showfood',$data);
+        $this->load->view('menu/content',$data);
     }
 
-    function add()
-    {
+    public function add(){
                 //Set Array for sending data 
-        $insert_data = array(
-            'id' => $this->input->post('id'),
-            'name' => $this->input->post('name'),
-            'price' => $this->input->post('price'),
-            'qty' => 1
-        );
+        $insert_data = array( 'id' => $this->input->post('id'),
+ 'name' => $this->input->post('name'),
+ 'price' => $this->input->post('price'),
+'qty' => 1 );
 
-                // This function add items to cart
-            $this->cart->insert($insert_data);
-
-                //This will show insert_data in cart
-            redirect('food/showfood');
+ // This function add items into cart.
+$this->cart->insert($insert_data);
+        // print_r($newfood);
+        
+       redirect('Food/showFood');
+     
+            
     }
 
     function remove($rowid) {
@@ -76,7 +76,7 @@ class Food extends CI_Controller {
              
 			$this->cart->update($data);
 		}
-		redirect('food/showfood');        
+		redirect('food/showFood');        
 	}	
 
     function billing_view() //This function will load "billing_view"
