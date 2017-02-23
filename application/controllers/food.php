@@ -79,14 +79,17 @@ $this->cart->insert($insert_data);
 		redirect('food/showFood');        
 	}	
 
-    function billing() //This function will load "billing_view"
+    function billing2() //This function will load "billing_view"
     {
         $this->load->view('billing');
     }
 
-    public function save_order()
+    public function billing()
     {
+        $this->load->view('billing');
                //This will store all values which inserted from user 
+       $b=$this->input->post('btn');
+       if(isset($b))   {
         $customer = array(
             'name'          => $this->input->post('name'),
             'address'       => $this->input->post('address'),
@@ -111,7 +114,8 @@ $this->cart->insert($insert_data);
         $cust_id = $this->Food_model->insert_order_detail($order_detail);
             endforeach;
         endif;
-
+         }
+      //  $this->load->view('billing');
             //Insert product information with order detail,
             //store in cart also store in database
         

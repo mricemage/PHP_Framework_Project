@@ -33,6 +33,10 @@
       color: white;
       padding: 15px;
     }
+    #back{
+      font-size: 25px;
+      width: 150px;
+    }
     
     /* On small screens, set height to 'auto' for sidenav and grid */
     @media screen and (max-width: 767px) {
@@ -42,8 +46,9 @@
       }
       .row.content {height:auto;} 
     }
+
   </style>
- 
+    
 </head>
 <body>
  <?php
@@ -91,22 +96,44 @@ endif;
     <div id="bill_info">
             
             <?php // Create form for enter user imformation and send values 'shopping/save_order' function?>
-            <form name="billing" method="post" action="<?php echo base_url() . 'index.php/Food/save_order' ?>" >
+            <form name="billing" method="post" action="<?php echo base_url() . 'index.php/Food/save_orderg' ?> ">
                 <input type="hidden" name="command" />
                 <div align="center">
                     <h1 align="center">Billing Info</h1>
                     <table border="0" cellpadding="15px">
                         <tr><td>Order Total:</td><td><strong>€ <?php echo number_format($grand_total, 2); ?></strong></td></tr>
-                        <tr><td>Your Name:</td><td><input type="text" name="name" required=""/></td></tr>
-                        <tr><td>Address:</td><td><input type="text" name="address" required="" /></td></tr>
-                        <tr><td>Phone:</td><td><input type="text" name="phonenumber"  required="" /></td></tr>
-                        <tr><td><?php
+                        <tr><td>Your Name:</td><td><input type="text" name="name" required style="margin: 10px;"/></td></tr>
+                        <tr><td>Address:</td><td><input type="text" name="address" required style="margin: 10px;" /></td></tr>
+                        <tr><td>Phone:</td><td><input type="text" name="phonenumber"  required style="margin: 10px;" /></td></tr>
+                        <tr id="alpha"><td>
+                        <?php
                         // This button for redirect main page.
                         echo "<br><a class ='fg-button teal' id='back' href=" . base_url() . "index.php/food/showFood>Back</a>&nbsp;";  ?>
-                            </td><td><br><input type="submit" class ='fg-button teal' value="Place Order" /></td></tr> 
+                            </td><td><br><input type="submit" name="btn" class ='fg-button teal' value="Place Order" data-toggle="modal" data-target="#myModal" /></td></tr> 
                             
                     </table><br>
                 </div>
+
+                <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
             </form>
         </div>
           

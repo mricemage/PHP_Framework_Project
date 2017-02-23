@@ -97,10 +97,12 @@ div#text {
 }
 tr{
     bgcolor:#FFFFFF;
+    line-height: 30px;
 }
 #main_heading{
     font-weight:bold;
     bgcolor:#FFFFFF;
+    margin: 10px;
 }
 div#name {
 font-weight: 700;
