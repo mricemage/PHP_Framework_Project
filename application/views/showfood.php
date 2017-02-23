@@ -95,7 +95,7 @@
                 
         <div id="cart" >
             <div id = "heading">
-                <h2 align="center">Products on Your Shopping Cart</h2>
+                <h2 align="center">How many things have you got here?</h2>
             </div>
             
                 <div id="text"> 
@@ -106,7 +106,7 @@
              echo 'There is no item in the cart! '; 
              }  ?> </div>
             
-                <table id="table" border="0" cellpadding="5px" cellspacing="1px">
+                <table id="table" border="0" cellpadding="2px" cellspacing="20px">
                   <?php
                   // All values of cart store in "$cart". 
                   if ($cart = $this->cart->contents()): ?>
@@ -114,10 +114,10 @@
                         <td>ID</td>
                         <td>Name</td>
                         <td>Price</td>
-                        <td>Qty</td>
+                        <td>Quantity</td>
                         <td>Amount</td>
                         <td>Cancel Product</td>
-                    </tr>
+                    </tr> <br>
                     <?php
                      // Create form and send all values in "shopping/update_cart" function.
                     echo form_open('food/update_cart');
@@ -138,19 +138,19 @@
                         <tr>
                             <td>
                        <?php echo $i++; ?>
-                            </td>
+                            </td> 
                             <td>
                       <?php echo $item['name']; ?>
                             </td>
                             <td>
-                                $ <?php echo number_format($item['price'], 2); ?>
+                                € <?php echo number_format($item['price'], 2); ?>
                             </td>
                             <td>
-                            <?php echo form_input('cart[' . $item['id'] . '][qty]', $item['qty'], 'maxlength="3" size="1" style="text-align: right"'); ?>
-                            </td>
+                            <?php echo form_input('cart[' . $item['id'] . '][qty]', $item['qty'], 'maxlength="3" size="4" style="text-align: right"'); ?>
+                            </td> 
                         <?php $grand_total = $grand_total + $item['subtotal']; ?>
                             <td>
-                                $ <?php echo number_format($item['subtotal'], 2) ?>
+                                € <?php echo number_format($item['subtotal'], 2) ?>
                             </td>
                             <td>
                               
@@ -168,14 +168,14 @@
                         echo number_format($grand_total, 2); ?></b></td>
                         
                         <?php // "clear cart" button call javascript confirmation message ?>
-                        <td colspan="5" align="right"><input type="button" class ='fg-button teal' value="Clear Cart" onclick="clear_cart()">
+                        <td colspan="5" align="right"><input type="button" class ='fg-button teal' value="Clear Cart" onclick="clear_cart()"> 
                             
                             <?php //submit button. ?>
-                            <input type="submit" class ='fg-button teal' value="Update Cart">
+                            <input type="submit" class ='fg-button teal' value="Update Cart"> 
                             <?php echo form_close(); ?>
                             
                             <!-- "Place order button" on click send "billing" controller  -->
-                            <input type="button" class ='fg-button teal' value="Place Order" onclick="window.location = 'shopping/billing_view'"></td>
+                            <input type="button" class ='fg-button teal' value="Place Order" onclick="window.location = 'billing'"></td> 
                     </tr>
 <?php endif; ?>
             </table>

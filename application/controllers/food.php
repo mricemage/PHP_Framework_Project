@@ -24,9 +24,9 @@ class Food extends CI_Controller {
     public function add(){
                 //Set Array for sending data 
         $insert_data = array( 'id' => $this->input->post('id'),
- 'name' => $this->input->post('name'),
- 'price' => $this->input->post('price'),
-'qty' => 1 );
+                              'name' => $this->input->post('name'),
+                              'price' => $this->input->post('price'),
+                              'qty' => 1 );
 
  // This function add items into cart.
 $this->cart->insert($insert_data);
@@ -79,9 +79,9 @@ $this->cart->insert($insert_data);
 		redirect('food/showFood');        
 	}	
 
-    function billing_view() //This function will load "billing_view"
+    function billing() //This function will load "billing_view"
     {
-        $this->load->view('billing_view');
+        $this->load->view('billing');
     }
 
     public function save_order()
@@ -96,16 +96,18 @@ $this->cart->insert($insert_data);
 
         $cust_id = $this->Food_model->insert_customer($customer);
 
-        $ord_id  = $this->Food_model->insert_order_detail($order);
-
+        
+        
         if ($cart = $this->cart->contents()):
             foreach ($cart as $item):
             $order_detail = array (
-                'id'        => $ord_id,
+        
                 'productid' => $item['id'],
                 'quantity'  => $item['qty'],
                 'price'     => $item['price']
             );
+
+        
         $cust_id = $this->Food_model->insert_order_detail($order_detail);
             endforeach;
         endif;

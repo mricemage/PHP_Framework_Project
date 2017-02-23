@@ -143,17 +143,17 @@ top: 2px;
 
 .fg-button.teal{
 color: #fff;
-border-color: #04A5A1;
-background-color:#08BBB7;
+border-color: #FBB02D;
+background-color:#FB6107;
 }
 
 .fg-button.teal:hover{
-background: #0ACFCB;
+background: #F3DE2C;
 }
 
 
 .fg-button.teal:active{
-background: #09cbc7;
+background: #F3DE2C;
 top: 2px;
 border-bottom-width: 1px;
 }

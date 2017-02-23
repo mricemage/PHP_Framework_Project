@@ -13,5 +13,17 @@ Class Food_model extends CI_model {
         return $this->db->get()->result_array();
     }
 
-
+    public function insert_customer($data)
+    {
+        $this->db->insert('customers', $data);
+        $id = $this->db->insert_id();
+        return (isset($id)) ? $id : FALSE;
+    }
+    
+    public function insert_order_detail($data)
+    {
+        $this->db->insert('order_detail', $data);
+        $id = $this->db->insert_id();
+        return (isset($id)) ? $id : FALSE;
+    }
 }
