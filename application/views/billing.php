@@ -11,22 +11,22 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
   <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    /* Remove the navbar's default margin-bottom and rounded borders */
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
     }
-    
+
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {height: 450px}
-    
+
     /* Set gray background color and 100% height */
     .sidenav {
       padding-top: 20px;
       background-color: #f1f1f1;
       height: 100%;
     }
-    
+
     /* Set black background color, white text and some padding */
     footer {
       background-color: #555;
@@ -37,18 +37,22 @@
       font-size: 25px;
       width: 150px;
     }
-    
+
     /* On small screens, set height to 'auto' for sidenav and grid */
     @media screen and (max-width: 767px) {
       .sidenav {
         height: auto;
         padding: 15px;
       }
-      .row.content {height:auto;} 
+      .row.content {height:auto;}
     }
 
   </style>
-    
+  <script type="text/javascript">
+    $(window).load(function(){
+        $('#myModal').modal('show');
+    });
+</script>
 </head>
 <body>
  <?php
@@ -67,7 +71,7 @@ endif;
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#">Foodie</a>
     </div>
@@ -79,24 +83,24 @@ endif;
         <li><a href="#">About</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+
       </ul>
     </div>
   </div>
 </nav>
-  
-<div class="container-fluid text-center">    
+
+<div class="container-fluid text-center">
   <div class="row content">
     <div class="col-sm-2 sidenav">
       <p><a href="#">Advertisement Place Here</a></p>
       <p><a href="#">Advertisement Place Here</a></p>
       <p><a href="#">Advertisement Place Here</a></p>
     </div>
-    <div class="col-sm-8 text-center"> 
+    <div class="col-sm-8 text-center">
     <div id="bill_info">
-            
+
             <?php // Create form for enter user imformation and send values 'shopping/save_order' function?>
-            <form name="billing" method="post" action="<?php echo base_url() . 'index.php/Food/save_orderg' ?> ">
+            <form name="billing" method="post" action="save_order">
                 <input type="hidden" name="command" />
                 <div align="center">
                     <h1 align="center">Billing Info</h1>
@@ -109,34 +113,16 @@ endif;
                         <?php
                         // This button for redirect main page.
                         echo "<br><a class ='fg-button teal' id='back' href=" . base_url() . "index.php/food/showFood>Back</a>&nbsp;";  ?>
-                            </td><td><br><input type="submit" name="btn" class ='fg-button teal' value="Place Order" data-toggle="modal" data-target="#myModal" /></td></tr> 
-                            
+                            </td><td><br><input type="submit" name="btn" class ='fg-button teal' value="Place Order" /></td></tr>
+
                     </table><br>
                 </div>
 
-                <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
+
             </form>
+
         </div>
-          
+
     </div>
 
     <div class="col-sm-2 sidenav">
