@@ -77,10 +77,10 @@ endif;
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="<?php echo base_url('index.php'); ?>">Home</a></li>
+        <li><a href="<?php echo base_url('index.php'); ?>">Home</a></li>
         <li><a href="<?php echo site_url('food/showFood'); ?>">Food List</a></li>
         <li><a href="#">Feedback</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="#">Download Document</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
 

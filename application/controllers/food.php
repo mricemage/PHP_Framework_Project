@@ -21,6 +21,14 @@ class Food extends CI_Controller {
         $this->load->view('menu/content',$data);
     }
 
+    public function feedback() //This function will load "feedback"
+    {
+        $this->load->model('Food_model');
+        $data['feedback']=$this->Food_model->showFeedbacks();
+        $data['page']='feedback';
+        $this->load->view('menu/content',$data);
+    }
+
     public function add(){
                 //Set Array for sending data
         $insert_data = array( 'id' => $this->input->post('id'),
@@ -28,8 +36,8 @@ class Food extends CI_Controller {
                               'price' => $this->input->post('price'),
                               'qty' => 1 );
 
- // This function add items into cart.
-$this->cart->insert($insert_data);
+        // This function add items into cart.
+        $this->cart->insert($insert_data);
         // print_r($newfood);
 
        redirect('Food/showFood');
@@ -69,8 +77,8 @@ $this->cart->insert($insert_data);
 
                     	$data = array(
 				'rowid'   => $rowid,
-                                'price'   => $price,
-                                'amount' =>  $amount,
+        'price'   => $price,
+        'amount' =>  $amount,
 				'qty'     => $qty
 			);
 
@@ -115,7 +123,7 @@ $this->cart->insert($insert_data);
         endif;
         $this->load->view('thankyou');
         $this->session->sess_destroy();
-        }
+      }
       //  $this->load->view('billing');
             //Insert product information with order detail,
             //store in cart also store in database
@@ -124,9 +132,16 @@ $this->cart->insert($insert_data);
 
 
 
+      public function add_comment()
+      {
+        $comment = array(
+          'customer_email'     => $this->input->post('email'),
+          'comments'           => $this->input->post('comments')
+        );
 
-
-
+        $comment_id = $this->Food_model->insert_feedback($comment);
+        redirect('food/feedback');
+      }
 
 
 }
